@@ -4,6 +4,8 @@
 
 预产期固定为 **2027 年 3 月 5 日（星期五）**。首次打开会按预产期预填今天的孕周（2026-11-22 为 25 周 + 2 天），也可以按产检单修改；之后孕周跟着本机日历自动增长。
 
+**在线使用：<https://lihaoran1993912.github.io/xiaoman/>**
+
 <img src="audit/screenshots/03-main.png" alt="小满主页" width="320" />
 
 ## 已实现
@@ -37,14 +39,16 @@ npm start      # 本地预览 http://127.0.0.1:4173
 
 ## 安装到 iPhone
 
-PWA 在 iOS 上必须通过 **HTTPS** 访问（localhost 除外），并且需要部署整个静态目录，不能只双击打开 HTML 文件。
+线上版本已经通过 GitHub Pages 发布，直接使用即可：
 
-1. 将整个项目目录部署到任意支持 HTTPS 的静态托管：Cloudflare Pages、Netlify、Vercel、GitHub Pages 或自有服务器。
-2. 用 iPhone 的 **Safari** 打开部署后的网址。
-3. 点击「分享」→「添加到主屏幕」→「添加」。
+1. 用 iPhone 的 **Safari** 打开 <https://lihaoran1993912.github.io/xiaoman/>。
+2. 按页面提示填写今天的孕周，点击「开始数日子」。
+3. 点击 Safari 的「分享」→「添加到主屏幕」→「添加」。
 4. 从主屏幕打开「小满」。首次在线打开后，Service Worker 会缓存核心资源，之后可以离线使用。
 
-> 微信内置浏览器、普通局域网 HTTP 地址和 `file://` 无法完成 iOS PWA 安装。项目全部使用相对路径，可部署在子目录。
+如果以后需要自行迁移，可以将整个项目目录部署到任意支持 HTTPS 的静态托管：Cloudflare Pages、Netlify、Vercel、GitHub Pages 或自有服务器。不要通过 `file://` 或微信内置浏览器安装。
+
+> 微信内置浏览器不会显示「添加到主屏幕」，需要改用 Safari 打开。项目全部使用相对路径，可部署在子目录。
 
 ## 日期模型
 
