@@ -1,0 +1,15 @@
+{
+  "name": "xiaoman-pregnancy-countdown",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "小满 · 给妻子用的孕期倒计时 PWA",
+  "scripts": {
+    "start": "node scripts/serve.js",
+    "test": "node --test tests/*.test.js",
+    "check": "node scripts/check.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

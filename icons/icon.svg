@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="小满 App 图标">
+  <defs>
+    <linearGradient id="bg" x1="76" y1="28" x2="444" y2="492" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F47A97"/>
+      <stop offset="0.52" stop-color="#E85B7F"/>
+      <stop offset="1" stop-color="#D64269"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(112 78) rotate(45) scale(344)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFD3C3" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#FFD3C3" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="seed" x1="188" y1="162" x2="342" y2="398" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFDF7"/>
+      <stop offset=".58" stop-color="#FFF4E6"/>
+      <stop offset="1" stop-color="#FFE4D6"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="281" y1="110" x2="350" y2="168" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFE1A4"/>
+      <stop offset="1" stop-color="#F1B964"/>
+    </linearGradient>
+    <filter id="softShadow" x="78" y="98" width="356" height="372" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#8E2848" flood-opacity=".2"/>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <rect width="512" height="512" fill="url(#glow)"/>
+  <circle cx="472" cy="446" r="212" fill="#9C294C" opacity=".09"/>
+
+  <g filter="url(#softShadow)" transform="rotate(-14 256 282)">
+    <ellipse cx="256" cy="286" rx="108" ry="136" fill="url(#seed)"/>
+    <ellipse cx="222" cy="235" rx="28" ry="58" fill="#FFFFFF" opacity=".34"/>
+  </g>
+
+  <path d="M272 177c7-38 37-66 78-70-1 38-26 71-65 81-4-4-9-8-13-11Z" fill="url(#leaf)"/>
+  <path d="M283 176c19-20 40-36 61-50" fill="none" stroke="#DDA054" stroke-width="4" stroke-linecap="round" opacity=".66"/>
+
+  <g fill="#FFF7E9">
+    <path d="M403 112c0 11-8 20-20 20 12 0 20 8 20 20 0-12 9-20 20-20-11 0-20-9-20-20Z" opacity=".78"/>
+    <circle cx="104" cy="374" r="6" opacity=".7"/>
+    <circle cx="402" cy="386" r="4" opacity=".48"/>
+  </g>
+</svg>

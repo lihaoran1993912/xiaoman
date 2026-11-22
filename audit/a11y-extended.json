@@ -1,0 +1,247 @@
+{
+  "generatedAt": "2026-11-22T13:57:18.550Z",
+  "engine": "axe-core 4.10.2",
+  "standards": [
+    "WCAG 2.0 A/AA",
+    "WCAG 2.1 A/AA",
+    "WCAG 2.2 A/AA",
+    "axe best-practice"
+  ],
+  "viewport": "390 × 844 @2x, iOS emulation, zh-CN, Asia/Shanghai",
+  "screens": [
+    {
+      "screen": "首次设置",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              ".onboarding__brand > .brand > .brand__name"
+            ],
+            [
+              ".onboarding__kicker"
+            ],
+            [
+              ".onboarding__hero > .eyebrow"
+            ],
+            [
+              "#onboarding-title"
+            ],
+            [
+              "em"
+            ],
+            [
+              ".onboarding__lede"
+            ],
+            [
+              ".setup-card__heading > h2"
+            ],
+            [
+              ".setup-card__heading > span"
+            ],
+            [
+              "#setup-weeks"
+            ],
+            [
+              "div[data-editor=\"setup\"] > .ga-part:nth-child(1) > label > .ga-unit[aria-hidden=\"true\"]"
+            ],
+            [
+              "#setup-days"
+            ],
+            [
+              "div[data-editor=\"setup\"] > .ga-part--days.ga-part > label > .ga-unit[aria-hidden=\"true\"]"
+            ],
+            [
+              "#setup-hint"
+            ],
+            [
+              ".primary-button[type=\"submit\"] > span"
+            ],
+            [
+              ".privacy-inline"
+            ],
+            [
+              ".onboarding__footer"
+            ]
+          ]
+        }
+      ],
+      "passes": 37,
+      "inapplicable": 53
+    },
+    {
+      "screen": "主页面",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              ".topbar > .brand > .brand__name"
+            ],
+            [
+              "#today-label"
+            ],
+            [
+              "#greeting"
+            ],
+            [
+              ".greeting-block__note"
+            ],
+            [
+              "#countdown-label-text"
+            ],
+            [
+              "#season-tag"
+            ],
+            [
+              "#countdown-number"
+            ],
+            [
+              "#countdown-unit"
+            ],
+            [
+              "#countdown-caption"
+            ],
+            [
+              ".due-meta > span:nth-child(1)"
+            ],
+            [
+              "#due-date"
+            ],
+            [
+              "#due-weekday"
+            ],
+            [
+              "#week-heading"
+            ],
+            [
+              "#gestational-weeks"
+            ],
+            [
+              ".week-unit:nth-child(2)"
+            ],
+            [
+              "#gestational-days"
+            ],
+            [
+              ".week-unit:nth-child(5)"
+            ],
+            [
+              "#stage-name"
+            ],
+            [
+              "#days-pregnant"
+            ],
+            [
+              ".progress__meta > span:nth-child(1)"
+            ],
+            [
+              "#progress-percent"
+            ],
+            [
+              ".progress__meta > span:nth-child(3)"
+            ],
+            [
+              "span[data-stage=\"first\"]"
+            ],
+            [
+              ".is-active"
+            ],
+            [
+              "span[data-stage=\"third\"]"
+            ],
+            [
+              "#next-title"
+            ],
+            [
+              "#next-note"
+            ],
+            [
+              "#daily-quote"
+            ],
+            [
+              "blockquote > footer"
+            ],
+            [
+              ".app-footer > p:nth-child(1)"
+            ],
+            [
+              ".app-footer__privacy"
+            ]
+          ]
+        }
+      ],
+      "passes": 36,
+      "inapplicable": 54
+    },
+    {
+      "screen": "设置抽屉",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "impact": "serious",
+          "help": "Elements must meet minimum color contrast ratio thresholds",
+          "targets": [
+            [
+              ".sheet__header > div > .eyebrow"
+            ],
+            [
+              "#settings-title"
+            ],
+            [
+              ".sheet__section-title"
+            ],
+            [
+              ".sheet__section-copy"
+            ],
+            [
+              "#settings-weeks"
+            ],
+            [
+              ".ga-editor--compact > .ga-part:nth-child(1) > label > .ga-unit[aria-hidden=\"true\"]"
+            ],
+            [
+              "#settings-days"
+            ],
+            [
+              ".ga-editor--compact > .ga-part--days.ga-part > label > .ga-unit[aria-hidden=\"true\"]"
+            ],
+            [
+              "#settings-hint"
+            ],
+            [
+              ".primary-button--small"
+            ],
+            [
+              "#install-title"
+            ],
+            [
+              "#install-copy"
+            ],
+            [
+              ".about-card > h3"
+            ],
+            [
+              ".about-card > p:nth-child(2)"
+            ],
+            [
+              ".about-card > p:nth-child(3)"
+            ],
+            [
+              "#clear-button"
+            ]
+          ]
+        }
+      ],
+      "passes": 21,
+      "inapplicable": 68
+    }
+  ]
+}

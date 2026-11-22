@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
+    />
+    <meta name="theme-color" content="#FBF4F0" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="小满，把等待宝宝的日子，一天天数成温柔。预产期 2027 年 3 月 5 日。"
+    />
+
+    <!-- iPhone 主屏幕 App -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="小满" />
+    <meta name="apple-mobile-web-app-title" content="小满" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32.png" />
+    <link rel="icon" type="image/svg+xml" href="./icons/icon.svg" />
+
+    <!-- iOS 主屏幕启动图：按机型精确匹配，避免冷启动白屏 -->
+    <link rel="apple-touch-startup-image" href="./icons/splash/iphone-440x956@3.png" media="screen and (device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="./icons/splash/iphone-430x932@3.png" media="screen and (device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="./icons/splash/iphone-428x926@3.png" media="screen and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="./icons/splash/iphone-414x896@3.png" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="./icons/splash/iphone-414x896@2.png" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="./icons/splash/iphone-414x736@3.png" media="screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="./icons/splash/iphone-402x874@3.png" media="screen and (device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="./icons/splash/iphone-393x852@3.png" media="screen and (device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="./icons/splash/iphone-390x844@3.png" media="screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="./icons/splash/iphone-375x812@3.png" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="./icons/splash/iphone-375x667@2.png" media="screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+    <link rel="apple-touch-startup-image" href="./icons/splash/iphone-320x568@2.png" media="screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
+
+    <link rel="manifest" href="./manifest.webmanifest" />
+
+    <title>小满 · 待产倒计时</title>
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+
+  <body>
+    <div class="ambient" aria-hidden="true">
+      <span class="ambient__glow ambient__glow--top"></span>
+      <span class="ambient__glow ambient__glow--bottom"></span>
+      <span class="ambient__dot ambient__dot--one"></span>
+      <span class="ambient__dot ambient__dot--two"></span>
+    </div>
+
+    <div class="boot" id="boot" aria-hidden="true">
+      <img src="./icons/icon.svg" width="64" height="64" alt="" />
+      <span>小满</span>
+    </div>
+
+    <noscript>
+      <div class="no-script">
+        <strong>需要开启 JavaScript</strong>
+        <p>开启后重新打开小满，就可以开始记录孕周了。</p>
+      </div>
+    </noscript>
+
+    <!-- 第一次打开：温柔地校准孕周 -->
+    <main
+      class="onboarding"
+      id="onboarding"
+      aria-labelledby="onboarding-title"
+      hidden
+    >
+      <header class="onboarding__brand">
+        <div class="brand">
+          <img class="brand__mark" src="./icons/icon.svg" width="36" height="36" alt="" />
+          <span class="brand__name">小满</span>
+        </div>
+        <p class="onboarding__kicker">2027 · 春日之约</p>
+      </header>
+
+      <div class="onboarding__hero">
+        <div class="hero-orbit" aria-hidden="true">
+          <span class="hero-orbit__sun"></span>
+          <span class="hero-orbit__ring"></span>
+          <span class="hero-orbit__spark"></span>
+        </div>
+        <p class="eyebrow">预产期 · 2027年3月5日</p>
+        <h1 class="onboarding__title" id="onboarding-title">
+          等春天，<br /><em>也等你。</em>
+        </h1>
+        <p class="onboarding__lede">从今天起，把等待的日子，<br />一天天数成温柔。</p>
+      </div>
+
+      <form class="setup-card" id="setup-form" novalidate>
+        <div class="setup-card__heading">
+          <h2>今天孕几周了？</h2>
+          <span>可按产检单填写</span>
+        </div>
+
+        <div class="ga-editor" data-editor="setup">
+          <div class="ga-part">
+            <button
+              class="step-button"
+              type="button"
+              data-step-target="setup-weeks"
+              data-step-delta="-1"
+              aria-label="孕周减一"
+            >
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M5 10h10" />
+              </svg>
+            </button>
+            <label class="ga-value">
+              <span class="sr-only">孕周</span>
+              <input
+                id="setup-weeks"
+                name="weeks"
+                type="number"
+                inputmode="numeric"
+                autocomplete="off"
+                min="0"
+                max="42"
+                value="25"
+                aria-describedby="setup-hint setup-error"
+              />
+              <span class="ga-unit" aria-hidden="true">周</span>
+            </label>
+            <button
+              class="step-button"
+              type="button"
+              data-step-target="setup-weeks"
+              data-step-delta="1"
+              aria-label="孕周加一"
+            >
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M10 5v10M5 10h10" />
+              </svg>
+            </button>
+          </div>
+
+          <span class="ga-join" aria-hidden="true">+</span>
+
+          <div class="ga-part ga-part--days">
+            <button
+              class="step-button"
+              type="button"
+              data-step-target="setup-days"
+              data-step-delta="-1"
+              aria-label="孕天减一"
+            >
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M5 10h10" />
+              </svg>
+            </button>
+            <label class="ga-value">
+              <span class="sr-only">孕天</span>
+              <input
+                id="setup-days"
+                name="days"
+                type="number"
+                inputmode="numeric"
+                autocomplete="off"
+                min="0"
+                max="6"
+                value="2"
+                aria-describedby="setup-hint setup-error"
+              />
+              <span class="ga-unit" aria-hidden="true">天</span>
+            </label>
+            <button
+              class="step-button"
+              type="button"
+              data-step-target="setup-days"
+              data-step-delta="1"
+              aria-label="孕天加一"
+            >
+              <svg viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M10 5v10M5 10h10" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <p class="field-hint" id="setup-hint">
+          已按预产期估算，后面会随日历自动长大。
+        </p>
+        <p class="form-error" id="setup-error" role="alert" hidden></p>
+
+        <button class="primary-button" type="submit">
+          <span>开始数日子</span>
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path d="M4 10h11M11 6l4 4-4 4" />
+          </svg>
+        </button>
+
+        <p class="privacy-inline">
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <rect x="5.25" y="8.5" width="9.5" height="7.25" rx="2" />
+            <path d="M7.3 8.5V6.8a2.7 2.7 0 0 1 5.4 0v1.7" />
+          </svg>
+          只保存在这台手机上，不上传
+        </p>
+      </form>
+
+      <p class="onboarding__footer">把每一天，都过成期待</p>
+    </main>
+
+    <!-- 日常主页面 -->
+    <main class="app" id="app" aria-labelledby="greeting" hidden>
+      <header class="topbar">
+        <div class="brand">
+          <img class="brand__mark" src="./icons/icon.svg" width="34" height="34" alt="" />
+          <span class="brand__name">小满</span>
+        </div>
+        <button class="icon-button" id="settings-button" type="button" aria-label="打开设置">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7h8M17 7h3M4 17h3M12 17h8" />
+            <circle cx="14.5" cy="7" r="2.2" />
+            <circle cx="9.5" cy="17" r="2.2" />
+          </svg>
+        </button>
+      </header>
+
+      <div class="app__content">
+        <section class="greeting-block" aria-label="今日问候">
+          <p class="eyebrow" id="today-label">11月22日 · 星期日</p>
+          <div class="greeting-block__row">
+            <h1 class="greeting" id="greeting">早安，妈妈</h1>
+            <p class="greeting-block__note">今天也和宝宝一起，慢慢长大。</p>
+          </div>
+        </section>
+
+        <section class="countdown-card" aria-labelledby="countdown-label">
+          <div class="countdown-card__art" aria-hidden="true">
+            <span></span>
+          </div>
+          <div class="countdown-card__top">
+            <p class="countdown-label" id="countdown-label">
+              <span class="live-dot" aria-hidden="true"></span>
+              <span id="countdown-label-text">距离预产期</span>
+            </p>
+            <span class="season-tag" id="season-tag">春日见</span>
+          </div>
+
+          <div class="countdown" aria-live="polite" aria-atomic="true">
+            <span class="countdown__number" id="countdown-number">--</span>
+            <span class="countdown__unit" id="countdown-unit">天</span>
+          </div>
+
+          <div class="countdown-card__foot">
+            <p class="countdown-caption" id="countdown-caption">宝宝会在春天，和你见面</p>
+            <p class="due-meta">
+              <span>预产期</span>
+              <span class="due-meta__dot" aria-hidden="true"></span>
+              <time id="due-date" datetime="2027-03-05">2027年3月5日</time>
+              <span class="due-meta__weekday" id="due-weekday">星期五</span>
+            </p>
+          </div>
+        </section>
+
+        <section class="week-card" aria-labelledby="week-heading">
+          <div class="week-card__top">
+            <div>
+              <p class="section-label" id="week-heading">今天孕</p>
+              <p class="week-value" aria-live="polite" aria-atomic="true">
+                <span id="gestational-weeks">--</span><span class="week-unit">周</span>
+                <span class="week-plus" id="week-plus">+</span><span id="gestational-days">--</span><span class="week-unit">天</span>
+              </p>
+            </div>
+            <div class="stage-card">
+              <span class="stage-card__name" id="stage-name">孕中期</span>
+              <span class="stage-card__meta" id="days-pregnant">已走过 -- 天</span>
+            </div>
+          </div>
+
+          <div class="progress">
+            <div class="progress__meta">
+              <span>孕期进度</span>
+              <span class="progress__percent" id="progress-percent">--%</span>
+              <span>40周</span>
+            </div>
+            <div
+              class="week-rail"
+              id="week-rail"
+              role="progressbar"
+              aria-label="孕期进度"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+            ></div>
+            <div class="stage-legend" aria-hidden="true">
+              <span data-stage="first">孕早期</span>
+              <span data-stage="second">孕中期</span>
+              <span data-stage="third">孕晚期</span>
+            </div>
+          </div>
+
+          <div class="next-up">
+            <span class="next-up__icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20">
+                <path d="M3.2 13.1c3.8-.4 6.5-2 8.2-4.8 1.1-1.8 1.4-3.7 1.4-5.3 2.1 4 2.7 8.6-1 11.1-2.7 1.8-6.1 1.1-8.6-1Z" />
+                <path d="M4.2 16.2c2.3-3.3 5-5.3 8.4-6.8" />
+              </svg>
+            </span>
+            <div class="next-up__copy">
+              <p id="next-title">下一站 · 孕28周</p>
+              <span id="next-note">还有 -- 天，进入孕晚期</span>
+            </div>
+          </div>
+        </section>
+
+        <blockquote class="daily-note">
+          <span class="daily-note__mark" aria-hidden="true">“</span>
+          <p id="daily-quote">今天也要好好吃饭，慢慢走路。你和宝宝，都不必着急。</p>
+          <footer>给妈妈的一句话</footer>
+        </blockquote>
+
+        <footer class="app-footer">
+          <p>把每一天，都过成期待</p>
+          <p class="app-footer__privacy">
+            <svg viewBox="0 0 20 20" aria-hidden="true">
+              <rect x="5.25" y="8.5" width="9.5" height="7.25" rx="2" />
+              <path d="M7.3 8.5V6.8a2.7 2.7 0 0 1 5.4 0v1.7" />
+            </svg>
+            记录仅保存在本机 · 无广告
+          </p>
+        </footer>
+      </div>
+    </main>
+
+    <!-- 设置底部抽屉 -->
+    <dialog class="sheet" id="settings-dialog" aria-labelledby="settings-title">
+      <div class="sheet__handle" aria-hidden="true"></div>
+      <div class="sheet__header">
+        <div>
+          <p class="eyebrow">只为这份期待</p>
+          <h2 id="settings-title">设置</h2>
+        </div>
+        <button class="icon-button icon-button--soft" id="settings-close" type="button" aria-label="关闭设置">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 6l12 12M18 6 6 18" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="sheet__body">
+        <form id="settings-form" novalidate>
+          <h3 class="sheet__section-title">调整孕周</h3>
+          <p class="sheet__section-copy">按今天的实际孕周修改，之后仍会自动增长。</p>
+
+          <div class="ga-editor ga-editor--compact" data-editor="settings">
+            <div class="ga-part">
+              <button
+                class="step-button"
+                type="button"
+                data-step-target="settings-weeks"
+                data-step-delta="-1"
+                aria-label="孕周减一"
+              >
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10h10" /></svg>
+              </button>
+              <label class="ga-value">
+                <span class="sr-only">孕周</span>
+                <input
+                  id="settings-weeks"
+                  name="settings-weeks"
+                  type="number"
+                  inputmode="numeric"
+                  autocomplete="off"
+                  min="0"
+                  max="42"
+                  value="25"
+                  aria-describedby="settings-hint settings-error"
+                />
+                <span class="ga-unit" aria-hidden="true">周</span>
+              </label>
+              <button
+                class="step-button"
+                type="button"
+                data-step-target="settings-weeks"
+                data-step-delta="1"
+                aria-label="孕周加一"
+              >
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 5v10M5 10h10" /></svg>
+              </button>
+            </div>
+
+            <span class="ga-join" aria-hidden="true">+</span>
+
+            <div class="ga-part ga-part--days">
+              <button
+                class="step-button"
+                type="button"
+                data-step-target="settings-days"
+                data-step-delta="-1"
+                aria-label="孕天减一"
+              >
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 10h10" /></svg>
+              </button>
+              <label class="ga-value">
+                <span class="sr-only">孕天</span>
+                <input
+                  id="settings-days"
+                  name="settings-days"
+                  type="number"
+                  inputmode="numeric"
+                  autocomplete="off"
+                  min="0"
+                  max="6"
+                  value="2"
+                  aria-describedby="settings-hint settings-error"
+                />
+                <span class="ga-unit" aria-hidden="true">天</span>
+              </label>
+              <button
+                class="step-button"
+                type="button"
+                data-step-target="settings-days"
+                data-step-delta="1"
+                aria-label="孕天加一"
+              >
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 5v10M5 10h10" /></svg>
+              </button>
+            </div>
+          </div>
+          <p class="field-hint" id="settings-hint">保存后，会从今天重新计算。</p>
+          <p class="form-error" id="settings-error" role="alert" hidden></p>
+
+          <button class="primary-button primary-button--small" type="submit">保存孕周</button>
+        </form>
+
+        <div class="install-card" id="install-card">
+          <span class="install-card__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <rect x="6.25" y="2.75" width="11.5" height="18.5" rx="3" />
+              <path d="M10 5.3h4M12 18.3h.01" />
+            </svg>
+          </span>
+          <div>
+            <h3 id="install-title">添加到主屏幕</h3>
+            <p id="install-copy">
+              用 Safari 打开，点「分享」→「添加到主屏幕」，就能像 App 一样使用。
+            </p>
+          </div>
+        </div>
+
+        <div class="about-card">
+          <h3>关于小满</h3>
+          <p>
+            预产期固定为 2027 年 3 月 5 日。孕周按本机日历自动增加，调整孕周后会从当天重新计算。
+          </p>
+          <p>这是一个安静的本地小工具，没有账号、广告或数据上传。内容仅作陪伴记录，不替代产检医生的建议。</p>
+        </div>
+
+        <button class="text-button" id="clear-button" type="button">清除本机记录</button>
+      </div>
+    </dialog>
+
+    <dialog class="confirm-dialog" id="confirm-dialog" aria-labelledby="confirm-title">
+      <div class="confirm-dialog__content">
+        <p class="eyebrow">重新开始</p>
+        <h2 id="confirm-title">清除本机记录？</h2>
+        <p>孕周会被重置，之后需要重新填写。这个操作无法撤销。</p>
+        <div class="confirm-dialog__actions">
+          <button class="secondary-button" id="clear-cancel" type="button">取消</button>
+          <button class="danger-button" id="clear-confirm" type="button">确认清除</button>
+        </div>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script type="module" src="./assets/app.js"></script>
+  </body>
+</html>
